@@ -17,8 +17,90 @@
   <script type="text/javascript">
     $(function() {
       'use strict';
-      // write an example here
+
+      var HeroModel
+        , HeroesCollection
+        , HeroItem
+        , HeroesList
+        , heroes
+        , list;
+
+      // Model class
+      HeroModel = Backbone.Model.extend({
+        defaults: {
+          name: null
+        }
+      });
+
+      // Collection Class
+      HeroesCollection = Backbone.Collection.extend({
+        model: HeroModel
+      });
+
+      // Item View Class
+      HeroItem = Backbone.View.extend({
+        tagName: 'li',
+
+        initialize: function() {
+          this.model.on("destroy", this.destroy, this);
+        },
+
+        render: function() {
+          this.$el.html(this.model.get('name'));
+          return this;
+        },
+
+        // There is a mixin called backbone-gcm that does this as well.
+        destroy: function() {
+          console.log('destroy model');
+          this.model.off();
+          this.undelegateEvents();
+          this.remove();
+        }
+      });
+
+      // List View Class
+      HeroesList = Backbone.View.extend({
+        className: 'heroes-list',
+
+        template: _.template($('#hero-list-template').html()),
+
+        events: {
+          "click .destroy": "destroy",
+          "click .destroy-collection": "destroyCollection"
+        },
+
+        render: function() {
+          this.$el.html(this.template())
+          this.collection.each(function(hero) {
+            var heroItem = new HeroItem({model: hero});
+            this.$el.append(heroItem.render().el);
+          }, this);
+
+          return this;
+        },
+
+        add: function() {}
+      });
+      _.extend(HeroesList.prototype, gcl);
+
+      heroes = new HeroesCollection([
+        {name: 'Mr. Miyagi'},
+        {name: 'Daniel San'},
+        {name: 'Will Vaughn'}
+      ]);
+
+      list = new HeroesList({collection: heroes});
+
+      // Initialization of the "App"
+      $('#app').append(list.render().el);
     });
+  </script>
+
+  <!-- Templates -->
+  <script type="text/template" id="hero-list-template">
+    <button class="destroy">Destroy List</button>
+    <button class="destroy-collection">Destroy Collection</button>
   </script>
 </body>
 </html>

@@ -22,7 +22,7 @@ define([
       model: HeroModel
     });
 
-    // View class extending gcm
+    // View class extending gcl
     HeroesList = Backbone.View.extend({
       className: 'heroes-list',
 
