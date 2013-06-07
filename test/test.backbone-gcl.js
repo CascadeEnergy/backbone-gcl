@@ -137,13 +137,21 @@ define([
         view.destroyCollection();
       });
 
-      it('destroys the models', function(done) {
-        // TODO actually write this.
-        view.destroy = function() {
-          done();
-        };
+      it('destroys the models', function() {
+        var modelsDestroyed = 0
+          , length = view.collection.length;
 
+        // Before destroying, set up listener on each model.
+        view.collection.each(function(model) {
+          model.on('destroy', function() {
+            modelsDestroyed++;
+          });
+        });
+
+        // Now destroy.
         view.destroyCollection();
+
+        expect(modelsDestroyed).to.equal(length);
       });
     });
   });
