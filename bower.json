@@ -1,0 +1,28 @@
+{
+  "name": "backbone-gcl",
+  "version": "0.1.0",
+  "main": "backbone-gcl.js",
+  "ignore": [
+    "lib",
+    "test",
+    "example",
+    "util",
+    "node_modules",
+    "components",
+    "Gruntfile.js",
+    "**/.*",
+    "**/*.json",
+    "**/*.html"
+  ],
+  "dependencies": {
+    "backbone": "~1.0.0",
+    "underscore": "~1.4.4",
+    "jquery": "~2.0.2"
+  },
+  "devDependencies": {
+    "mocha": "~1.9.0",
+    "requirejs": "~2.1.6",
+    "chai": "~1.6.0"
+  }
+}
+
