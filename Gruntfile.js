@@ -5,6 +5,8 @@
 
 module.exports = function(grunt) {
 
+  var port = 8981;
+
   grunt.initConfig({
     copy: {
       dist: {
@@ -20,9 +22,24 @@ module.exports = function(grunt) {
         }
       }
     },
+    connect: {
+      server: {
+        options: {
+          port: port,
+          base: '.'
+        }
+      }
+    },
     shell: {
       'mocha-phantomjs': {
         command: 'mocha-phantomjs -R spec http://localhost:8000/testrunner.html',
+        options: {
+          stdout: true,
+          stderr: true
+        }
+      },
+      'ci': {
+        command: 'mocha-phantomjs -R spec http://localhost:' + port +'/testrunner.html',
         options: {
           stdout: true,
           stderr: true
@@ -57,6 +74,7 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -64,6 +82,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-contrib-jshint');
 
+  grunt.registerTask('test', ['connect', 'shell:ci']);
   grunt.registerTask('build', ['copy', 'uglify']);
   grunt.registerTask('default', ['nodemon']);
 };
