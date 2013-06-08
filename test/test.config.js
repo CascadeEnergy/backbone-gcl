@@ -4,7 +4,6 @@ require.config({
     jquery: '/bower_components/jquery/jquery',
     underscore: '/bower_components/underscore/underscore',
     backbone: '/bower_components/backbone/backbone',
-    mocha: '/bower_components/mocha/mocha',
     chai: '/bower_components/chai/chai'
   },
   shim: {
@@ -19,16 +18,8 @@ require.config({
 });
 
 require([
-  'require', 'mocha'
-],
-function(require)  {
-
-  mocha.setup('bdd');
-
-  require([
-    'test/test.backbone-gcl'
-  ], function() {
-    if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
-    else { mocha.run(); }
-  });
+  'test/test.backbone-gcl'
+], function() {
+  if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
+  else { mocha.run(); }
 });
