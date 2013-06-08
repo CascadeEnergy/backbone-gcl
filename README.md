@@ -92,6 +92,7 @@ $ node ./util/web-server.js
 ```
 
 and then navigate to <http://localhost:8000/example/example.html>
+
 ---
 [top](#contents)
 ### [API](id:api)
@@ -144,3 +145,7 @@ Also tests in the browser at <http://localhost:8000/testrunner.html>
 ---
 [top](#contents)
 ### [Support](id:support)
+
+Make an issue.
+
+Come talk to me on IRC freenode: `#sensei`
