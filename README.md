@@ -1,5 +1,6 @@
 # backbone-gcl
 =================
+[![Build Status](https://secure.travis-ci.org/nackjicholson/backbone-gcl.png?branch=master)](https://travis-ci.org/nackjicholson/backbone-gcl)
 
 description
 
