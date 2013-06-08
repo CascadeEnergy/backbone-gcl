@@ -11,6 +11,9 @@
       "email": "you@example.com"
     }
   ],
+  "scripts": {
+    "test": "grunt test"
+  },
   "dependencies": {},
   "devDependencies": {
     "mocha": "~1.10.0",
