@@ -12,7 +12,7 @@
     }
   ],
   "scripts": {
-    "test": "node ./util/web-server.js && mocha-phantomjs http://localhost:8000/testrunner.html"
+    "test": "grunt shell:mocha-phantomjs"
   },
   "dependencies": {},
   "devDependencies": {

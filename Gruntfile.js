@@ -64,7 +64,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-contrib-jshint');
 
-  grunt.registerTask('test', ['nodemon', 'shell:mocha-phantomjs']);
   grunt.registerTask('build', ['copy', 'uglify']);
   grunt.registerTask('default', ['nodemon']);
 };
