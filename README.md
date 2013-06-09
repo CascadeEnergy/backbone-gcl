@@ -8,7 +8,8 @@ gcl = garbage collection for lists.
 
 Contributers:
 
-- Will Vaughn
+- [Will Vaughn](https://github.com/nackjicholson)
+- [Michael Schoenfelder](https://github.com/noTxt)
 
 ---
 ### [Contents](id:contents)
